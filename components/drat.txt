@@ -1,0 +1,288 @@
+style={{backgroundImage:`url(${user.image})`},
+                    {objectPosition:'center'},
+                    {objectFit:'contain'}
+    
+                }
+
+
+
+  <Swiper
+                                        spaceBetween={100}
+                                        slidesPerView={1}
+                                        navigation
+                                        pagination={{ clickable: true }}
+                                        scrollbar={{ draggable: true }}
+                                        onSlideChange={() => console.log('slide change')}
+                                        onSwiper={(swiper) => console.log(swiper)}
+                                >
+                                        {user.type&&user.type.map( t=> (
+
+                                        <SwiperSlide  key={t.index}>
+                                                
+                                                    {t}
+                                            
+                                        </SwiperSlide>
+                                        ))}
+        
+                                </Swiper>
+
+
+
+
+    <div>
+           
+
+
+{ data.dataImage.map(img=>(
+                            <div key={img.id}>
+                            <img class="slider__image" src={img.image} alt=""/>
+                            <p>{img.Caption}</p>
+                        </div>
+                       ))
+                       
+                       }
+
+
+                       import React, {useState, useEffect} from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import SwiperCore from "swiper"
+import 'swiper/swiper-bundle.css';
+import { FaMaxcdn } from 'react-icons/fa';
+
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+function Slider() {
+   
+const data = [
+        {id:1,
+        image:'/img.2.jpg',   
+        Caption:"Surface Deals",
+        dataImage:[
+                
+                {id:2},
+                { image:'/img.2.jpg'},
+                {Caption:"top"}
+            ]
+        },
+
+        {
+            id:2,
+            image:'/img.2.jpg',
+            Caption:"back",
+            dataImage:
+            [
+            {id:2},
+            { image:'/img.2.jpg'},
+            {Caption:"top"}
+            ]
+        },
+
+        {
+            id:3,
+            image:'/img.2.jpg',
+            Caption:"front",
+            dataImage:[
+                {id:2},
+                { image:'/img.2.jpg'},
+                {Caption:"top"}
+
+
+        ]
+        },
+
+        {
+            id:3,
+            image:'/img.2.jpg',
+            Caption:"side",
+            dataImage:[
+                {id:2},
+                { image:'/img.2.jpg'},
+                {Caption:"top"}
+
+
+            ]
+        }
+        
+
+    ]
+ 
+    const [newData, SetnewData] = useState(data)
+    // const [newData2, SetnewData2] = useState([])
+    // useEffect(() => {
+    //     SetnewData(data)
+    //     SetnewData2(newData.dataImage)
+    //    console.log("hi")
+    // }, [])
+
+    return (
+
+       
+        <div>
+       
+
+
+        <div class="slider__wrapper container-fluid">
+            <Swiper
+                    spaceBetween={50}
+                    slidesPerView={1}
+                    navigation
+                    pagination={{ clickable: true }}
+                    scrollbar={{ draggable: true }}
+                    onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => console.log(swiper)}
+                    >
+                    { newData.map(user=>(
+
+                    <SwiperSlide key={user.id} >
+ 
+                    <div class="slider__container"> 
+                      
+                      <div className="image__container">
+                        {/* { data.dataImage.map(img=>(
+                                <div key={img.id}>
+                                <img class="slider__image" src={img.image} alt=""/>
+                                <p>{img.Caption}</p>
+                            </div>
+                        )) */}
+                       
+                       {/* } */}
+
+                            <img className = "image__slider img-fluid rounded mx-auto d-block" src={user.image} alt=""/>
+                      </div>
+                        
+
+                        <h1 class="slider__header btn btn-primary">
+                            {user.username}</h1>
+        
+                        <p class="slider__caption ">
+                        {user.username}
+                        </p>
+
+                    </div>
+                        
+                    </SwiperSlide>
+                    ))}
+
+                    {/* {newData2.map(okData => (
+
+                    <SwiperSlide key = {okData.id}>
+                        <div>
+                            <img src={okData.image}></img>
+                            
+                        </div>
+
+                    </SwiperSlide>
+                    ))} */}
+                    </Swiper>
+                </div>
+
+                {newData.map((mydata=>
+            
+            <div>
+                {mydata.Caption}
+                <div>
+                    { mydata.dataImage && mydata.dataImage.map((item)=>(
+                        <div>
+                       <p>{item.id}</p> 
+                       <p>{item.Caption}</p> 
+                       </div>
+                    )) }
+                </div>
+            
+            </div>
+            
+       
+           
+            
+    ))}
+            <style jsx>
+                {`
+                   
+                    .slider__container{
+                        display: flex;
+                        flex-direction: column;
+                        height: 600px;
+                        width:100%;
+                        align-items: center;
+                        text-align: center;
+                        margin-bottom:50px;
+                        padding-bottom: 20px;
+                        justify-content: center;
+                        box-shadow: 5px;
+                        background-repeat: no-repeat;
+                        object-fit: contain;
+                        object-position:center;
+                        z-index: -20;
+                    }
+
+                    
+                `}
+
+            </style>
+
+
+             <Swiper
+                    
+                    spaceBetween={100}
+                    slidesPerView={1}
+                    navigation
+                    pagination={{ clickable: true }}
+                    scrollbar={{ draggable: true }}
+                    onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => console.log(swiper)}
+            >
+                    { newData.map(user=>(
+
+                    <SwiperSlide key={user.id} >
+
+                      <div className="image">
+                            <img className = "image__jpg rounded mx-auto d-bloc" src={user.image} alt=""/>
+                      </div>
+                        
+                        <div class="image__overlay">
+                            <h3 class="image__title text-center">
+                                {user.caption}</h3>
+
+                            <p class="image__description text-center h-5 ">
+                            {user.title}
+                            </p>
+                        </div>
+                       
+                    </SwiperSlide>
+                    ))}
+
+                
+                </Swiper>
+
+        </div>
+    )
+}
+
+export default Slider
+ <div class="swiper__container container">
+                <Swiper
+                    spaceBetween={100}
+                    slidesPerView={1}
+                    navigation
+                    pagination={{ clickable: true }}
+                    scrollbar={{ draggable: true }}
+                    onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => console.log(swiper)}
+                >
+                    <SwiperSlide >
+                   
+                   <div class="card" >
+                        <img src='#' class="card-img-top" />
+                        <div class="card-img-overlay">
+                            <h5 class="card-title text-light lead">world</h5>
+                            <h6 class="card-subtitle mb-2 text-light lead">hallo</h6>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                        </div>
+                       
+                  
+                    </SwiperSlide>
+              
+                </Swiper>
+                </div>
