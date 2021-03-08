@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {FaAlignRight } from 'react-icons/fa';
+import {FaAlignRight, FaSistrix } from 'react-icons/fa';
 import Link from 'next/link'
 
 
@@ -10,52 +10,110 @@ function MyNavbar() {
     const handleClick = ()=>(setIsOpen(!isOpen))
 
     return (
-        <div class="navbar-wrapper container">
+        <div className="navbar-wrapper">
             
-           <div class="nav__container ">
-                    <div class="navright_container">
+           <div className="nav__container">
+                    <div className="navright_container ">
                         <Link href="/">
-                            <a class="nav__logo mt-3" >
-                               <p className="btn btn-outline-secondary btn-sm">At Bali Java</p> 
+                            <a className="nav__logo  mt-3" >
+
+                                {/* <img
+                                    className ="header__logo"
+                                    src="/vercel.svg"
+                                
+                                /> */}
+                               <p className="btn btn-outline-secondary btn-sm header__logo">At Bali Java</p> 
                             </a>
                         </Link>
+
+                        <div className="header__search ">
+                            <input
+                                className ="header__searchInput"
+                                type="text"
+                                />
+                            <div className="header__search__logo px-2">
+                                <FaSistrix/>
+                            </div>
+                         </div>
                        
                     </div>
-                <div className = "nav__menu__big">
+
+              
+                <div className = "nav__menu__big ">
                     <Link  href="/about">
-                        <a className="nav__menu__item btn btn-outline-secondary  btn-sm px-4 ">About</a>
+                        <a className="nav__menu__item btn btn-outline-secondary  btn-sm px-4 text-white ">About</a>
                      </Link >
 
                      <Link  href="/products">
-                        <a className="nav__menu__item btn btn-outline-secondary btn-sm px-4 ">Products</a>
+                        <a className="nav__menu__item btn btn-outline-secondary btn-sm px-4 text-white ">Products</a>
                      </Link >
                      <Link  href="/about">
-                        <a className="nav__menu__item btn btn-outline-secondary btn-sm px-4 ">Contact</a>
+                        <a className="nav__menu__item btn btn-outline-secondary btn-sm px-4 text-white ">Contact</a>
                      </Link >
                            
                 </div>
                   
-                    <div onClick={handleClick} class="nav__humberger">
-                        <a className="menu-logo"> < FaAlignRight/      ></a>
+                    <div onClick={handleClick} className="nav__humberger">
+                        <div className="menu-logo"> <
+                             FaAlignRight
+                            / >
+                        </div>
             </div>
                   
                 </div>
  
             {isOpen ? (
                  <div className = "nav__menu">
+                      <Link  href="/about">
+                        <a className="nav__menu__item  m-2 text-white ">Sign In</a>
+                     </Link >
                      <Link  href="/about">
-                        <a className="nav__menu__item btn btn-outline-secondary btn-sm my-2 ">About</a>
+                        <a className="nav__menu__item  m-2 text-white ">Sign Out</a>
+                     </Link >
+                     <Link  href="/about">
+                        <a className="nav__menu__item  m-2 text-white ">About</a>
                      </Link >
                      <Link  href="/products">
-                        <a className="nav__menu__item btn btn-outline-secondary btn-sm my-2 ">Product</a>
+                        <a className="nav__menu__item  m-2 text-white ">Product</a>
                      </Link >
                      <Link  href="/contact">
-                        <a className="nav__menu__item btn btn-outline-secondary btn-sm my-2 ">Contact</a>
+                        <a className="nav__menu__item  m-2 text-white ">Contact</a>
                      </Link >
                    
                 </div>):(
                 <a className="nav__helper">Lorem ipsum</a>
             )}
+
+            <style jsx> { `
+                
+                .header__logo{
+                    width:100 px;
+                    object-fit:contain;
+                    color:white;
+                }
+
+                .header__search{
+                    display:flex;
+                    align-items:center;
+                    border-radius:20 px;
+                    boder:none;
+                    height:20px;
+
+                }
+
+                .header__search__logo{
+                    height:26px;
+                    color:white;
+                    background:green;
+                    boder:none
+
+               
+                }
+                
+                
+                `
+                }
+            </style>
                             
           
         </div>

@@ -10,6 +10,9 @@ body {
     background:#fff;
     color:#000;
     font-size:15px;
+    /* max-width: 600px; */
+     max-height: 500px;
+    /* padding: 42px 24px; */
 }
 
 a {
@@ -25,37 +28,6 @@ ul{
   list-style: none;
 }
 
-/* .container{
-  width: 90%;
-  max-width:  1100px;
-  margin: auto;
-} */
-/* 
-.btn {
-  cursor:pointer;
-  display:inline-block;
-  border:0;
-  font-weight: bold;
-  background: #222;
-  color:#fff;
-  font-size:15px;
-  padding:0px 10px;
- 
-
+img{
+  max-width: 100%;
 }
-
-.btn:hover{
-  opacity:0.9;
-}
-
-.dark{
-  color:#fff;
-
-}
-
-.dark .btn {
-  background: #ffff;
-  color:#333
-
-} */
-

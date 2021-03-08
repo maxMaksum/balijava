@@ -23,7 +23,7 @@ function ProductCom(props) {
                 {props.img && props.img.map(i=>(
                     <SwiperSlide >
                         <div className="card">
-                         <img class="card-img-top"  src={i}  />
+                         <img className="card-img-top"  src={i}  />
                          </div>
                 
                   </SwiperSlide>

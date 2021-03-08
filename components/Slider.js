@@ -5,6 +5,7 @@ import SwiperCore from "swiper"
 import 'swiper/swiper-bundle.css';
 import { FaMaxcdn } from 'react-icons/fa';
 
+
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay ]);
 function Slider() {
    
@@ -72,7 +73,7 @@ const data = [
     return (
         
         <div className ="slider__main">
-        <div class="swiper__container container">
+        <div className="swiper__container">
             <Swiper
                     spaceBetween={100}
                     // autoplay= {{
@@ -81,7 +82,7 @@ const data = [
                     // }}
                    
                     slidesPerView={1}
-                    navigation
+                    navigation 
                     pagination={{ clickable: true }}
                     scrollbar={{ draggable: true }}
                     onSlideChange={() => console.log('slide change')}
@@ -91,13 +92,12 @@ const data = [
 
                     <SwiperSlide key={user.id}>
                    
-                   <div class="card" >
-                        <img src={user.image} class="card-img-top" />
-                        <div class="card-img-overlay">
-                            <h5 class="card-title text-light lead">{user.caption}</h5>
-                            <h6 class="card-subtitle mb-2 text-light lead">{user.title}</h6>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+                   <div className="card text-right" >
+                        <img class="img-fluid"src={user.image} className="card-img-top" />
+                        <div className="card-img-overlay ">
+                            <h5 className="card-title text-light">{user.caption}</h5>
+                            <h6 className="card-subtitle mb-2 text-light ">{user.title}</h6>
+                          
                         </div>
                         </div>
                        
@@ -117,10 +117,12 @@ const data = [
                 .swiper-main{
                     margin-bottom:50 px;
                         width:14rem;
+                      
                     }
 
+             
+                }
               
-                    
                 `}
 
             </style>

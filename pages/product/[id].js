@@ -1,82 +1,95 @@
-import React from 'react'
+import Image from 'next/image'
+import ProductDetail from '../../components/ProductDetail'
+import {client} from '../../utils/shopify'
 
-const Product = [
-    {   id:1,
-        image:['/bckground.jpg', '/bckground.jpg', '/bckground.jpg','/bckground.jpg' ],  
-        caption:"Surface Deals",
-        title: "At Bali Java",
-        type:['a', 'b', 'c', 'd']
-        
-    },
+export const getStaticPaths = async () =>{
 
-     {
-            id:2,
-            image:['/bckground.jpg', '/bckground.jpg', '/bckground.jpg','/bckground.jpg' ],
-            caption:"Surface Deals",
-            title: "At Bali Java",
-           
-     },
-
-        {
-            id:3,
-            image:['/bckground.jpg', '/bckground.jpg', '/bckground.jpg','/bckground.jpg' ],
-            caption:"Surface Deals",
-            title: "At Bali Java",
-            
-        },
-
-        {
-            id:4,
-            image:['/bckground.jpg', '/bckground.jpg', '/bckground.jpg','/bckground.jpg' ],
-            caption:"Surface Deals",
-            title: "At Bali Java",
-           
+    const res =  await client.product.fetchAll()
+    const products = await JSON.parse(JSON.stringify(res))
+    const paths = products.map(product =>{
+        return {
+            params:{id:product.id.toString()}
         }
-        
+    })
 
-    ] 
-
-
-export const getStaticPath = async () =>{
-const path = Product.map(p=>{
-    return{
-        params:{
-            id:p.id.toString()}
+    return {
+       
+        paths:paths,
+        fallback:false
     }
-})
-return {
-    path,
-    fallback:false
 }
 
-}
 
-// export const getStaticProps = async(context) =>{
-//      id: context.params.id;
-     
-// }
+export const getStaticProps = async(context)=>{
+    const id = context.params.id
+    const product =  await client.product.fetch(id)
+  
+    return {
+      props: {
+        product: JSON.parse(JSON.stringify(product)),
+       },
+    }
+  }
 
 
-function Details() {
+function Details({product}) {
+
+    console.log(product)
+
+    const {NEXT_PUBLIC_API} = process.env
     return (
-        <div className="container">
-            <h1>Details Page</h1>
-            <div className="col">
-            <div class="card">
-                <h1 className="btn btn-primary">
-
-                   Sukses Max
-                </h1>
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div className="container product__container mt-5">
+            <div class="row mx-auto">
+                <div className="col  col-md-8">
+                    <ProductDetail productImage={product.images}/>
                 </div>
-            </div>
-            </div>
 
+                <div class="col col-md-4">
+                    <p class="text-lead"> {product.title}.</p>
+                    <div className="product__price">
+                      <small>IDR</small>
+                      <strong> {product.variants[0].price}</strong>
 
+                    </div>
+
+                    <div>
+                        <p>{product.description}</p>
+                    </div>
+                    
+                </div>
+
+               
+            </div>
             
+
+            <style jsx>{`
+
+                .product__row{
+                    
+               
+                }
+                
+                .product__details__img{
+                    width:500px;
+                    height:400px;
+                    object-fit:contain;
+                    object-position:center;
+                  
+         
+                }
+
+              
+                
+                
+                `
+                
+                
+                }</style>
+
         </div>
     )
 }
+
+
 
 export default Details
