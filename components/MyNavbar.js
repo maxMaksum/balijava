@@ -26,16 +26,7 @@ function MyNavbar() {
                             </a>
                         </Link>
 
-                        <div className="header__search ">
-                            <input
-                                className ="header__searchInput"
-                                type="text"
-                                />
-                            <div className="header__search__logo px-2">
-                                <FaSistrix/>
-                            </div>
-                         </div>
-                       
+
                     </div>
 
               
@@ -47,7 +38,7 @@ function MyNavbar() {
                      <Link  href="/products">
                         <a className="nav__menu__item btn btn-outline-secondary btn-sm px-4 text-white ">Products</a>
                      </Link >
-                     <Link  href="/about">
+                     <Link  href="/contact">
                         <a className="nav__menu__item btn btn-outline-secondary btn-sm px-4 text-white ">Contact</a>
                      </Link >
                            

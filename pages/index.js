@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {client} from '../utils/shopify'
 import Head from 'next/head'
 import Products_Slider from '../components/Products_Slider'
 import Link from 'next/link'
+import {FaAlignRight, FaSistrix } from 'react-icons/fa';
+import Fuse from 'fuse.js';
 
 import Slider from '../components/Slider';
 import { FaLongArrowAltRight } from 'react-icons/fa';
@@ -19,9 +21,33 @@ export const getStaticProps = async()=>{
 }
 
 
-export default function Home( props) {
+export default function Home (props) {
 
-  console.log(props.products)
+
+const [query, setQuery] = useState('')
+const Psearch = props.products
+
+console.log('new', Psearch)
+
+
+const fuse = new Fuse(Psearch, { 
+  keys: ["title"]    
+});  
+
+console.log('new', fuse)
+const results = fuse.search(query);
+  // const results = fuse.search('bender');
+
+console.log('new-research',results)
+const ProductResults = query ? results.map(result=>result.item): Psearch
+
+console.log('ProductResults', ProductResults)
+
+function handleOnSearch({ currentTarget }){
+  const {value} = currentTarget
+  setQuery(value)
+}
+console.log(props.products)
   return (
     <div className="container-main">
         <Head>
@@ -31,10 +57,27 @@ export default function Home( props) {
           <Slider/>
        </div>
 
-      <div className="overflow-hidden g-1 ">
-       <div className="row">
 
-      {props.products.map(product=>(
+      <div className="overflow-hidden g-1 w-100">
+
+            <div className="header__search d-flex justify-content-center  container mx-auto py-20">
+                  <input
+                      className ="header__searchInput w-75"
+                      type="text"
+                      value={query}
+                      onChange={handleOnSearch}
+                      />
+                  <div className="header__search__logo px-2">
+                      <FaSistrix/>
+                  </div>
+            </div>
+
+      
+     
+
+       <div className="row ">
+     
+      {ProductResults.map(product=>(
        
         <div key={product.id} className="col col-sm-6  col-md-6 col-lg-4 product__container">
             
@@ -61,32 +104,12 @@ export default function Home( props) {
 
       ))}
 
-
-            {/* {products.map(p=>(
-          <div key = {p.id}className="col col-sm-6  col-md-6 col-lg-4 product__container">
-
-            <div className="border border-primary my-2">
-              <div className="p-2">
-                                <Products_Slider productImage={p.product_images}/>
-              </div>
-              <div className="product__info py-1 text-center card-body ">
-                 <p className="product__title "> {p.name}</p>
-                <div className="product__price"> 
-                     <small>$</small>
-                      <strong> {p.price}</strong>
-                 </div>
-                  < Link href={"/product/" + p.id}>
-                     <a className="product_button text-white btn btn-sm btn-success ">Learn More</a>
-                  </Link> 
-                        
-              </div>          
-          </div>
-          </div>
-            ))} */}
       </div>
       </div>
       
 <style jsx>{`
+
+
 
   .product__container{
     display:flex;
@@ -96,6 +119,26 @@ export default function Home( props) {
   }
 
 
+ 
+  .header__search{
+    display:flex;
+    align-items:center;
+   
+    border:none;
+    height:30px;
+    margin-top:10px;
+  
+       
+    }
+
+  .header__search__logo{
+    height:28px;
+    color:white;
+    background:green;
+    border-radius:20 px;
+      
+  }
+           
   .product__info{
     height:100px;
     width:100%;
