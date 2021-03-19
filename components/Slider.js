@@ -17,7 +17,7 @@ const data = [
         
         dataImage:[
                 
-                {id:2},
+                {id:11},
                 { image:'/bckground.jpg'},
                 {Caption:"top"}
             ]
@@ -28,9 +28,10 @@ const data = [
             image:'/bckground.jpg',
             caption:"Surface Deals",
             title: "lorem lorem lorem lorem",
+
             dataImage:
             [
-            {id:2},
+            {id:12},
             { image:'/bckground.jpg'},
             {Caption:"top"}
             ]
@@ -42,7 +43,7 @@ const data = [
             caption:"Surface Deals",
             title: "lorem lorem lorem lorem",
             dataImage:[
-                {id:2},
+                {id:13},
                 { image:'/bckground.jpg'},
                 {Caption:"top"}
 
@@ -51,12 +52,12 @@ const data = [
         },
 
         {
-            id:3,
+            id:4,
             image:'/bckground.jpg',
             caption:"Surface Deals",
             title: "lorem lorem lorem lorem lorem lorem lorem lorem",
             dataImage:[
-                {id:2},
+                {id:14},
                 { image:'/bckground.jpg'},
                 {Caption:"top"}
 
@@ -76,11 +77,7 @@ const data = [
         <div className="swiper__container">
             <Swiper
                     spaceBetween={100}
-                    // autoplay= {{
-                    //     delay: 2500,
-                    //     disableOnInteraction: false,
-                    // }}
-                   
+                 
                     slidesPerView={1}
                     navigation 
                     pagination={{ clickable: true }}

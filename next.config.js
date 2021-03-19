@@ -1,7 +1,6 @@
-require('dotenv').config()
-
-module.exports = {
-    env:{
-        NEXT_PUBLIC_API:process.env.NEXT_PUBLIC_API
-    }
-}
+// module.exports = {
+//     env: {
+//       MAIL=process.env.MAIL,
+//       PASS= process.env.PASS
+//     },
+//   };

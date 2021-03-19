@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
-import {FaAlignRight, FaSistrix } from 'react-icons/fa';
+import {FaAlignRight,FaWhatsapp, FaFacebookF} from 'react-icons/fa';
 import Link from 'next/link'
+import { Dropdown } from 'react-bootstrap'
 
 
 
@@ -10,65 +11,108 @@ function MyNavbar() {
     const handleClick = ()=>(setIsOpen(!isOpen))
 
     return (
-        <div className="navbar-wrapper">
+    
+    <div className="navbar-wrapper">
             
-           <div className="nav__container">
-                    <div className="navright_container ">
-                        <Link href="/">
-                            <a className="nav__logo  mt-3" >
+        <div className="nav__container">
+            <div className="navright_container ">
+                <Link href="/">
+                    <a className="nav__logo  mt-3" >
+                       <p className="nav__menu__item  btn btn-outline-success  btn-spx-4   ml-4 header__logo">At Bali Java</p> 
+                    </a>
+                </Link>
 
-                                {/* <img
-                                    className ="header__logo"
-                                    src="/vercel.svg"
-                                
-                                /> */}
-                               <p className="btn btn-outline-secondary btn-sm header__logo">At Bali Java</p> 
-                            </a>
-                        </Link>
+                <div className="d-flex social-menu ">
+                    <Link href="https://wa.me/6281246951065">
+                        <a className="social-logo text-white mx-2 px-2"> 
+                            <FaWhatsapp/ >
+                        </a>
+                    </Link>
 
-
-                    </div>
-
-              
-                <div className = "nav__menu__big ">
-                    <Link  href="/about">
-                        <a className="nav__menu__item btn btn-outline-secondary  btn-sm px-4 text-white ">About</a>
-                     </Link >
-
-                     <Link  href="/products">
-                        <a className="nav__menu__item btn btn-outline-secondary btn-sm px-4 text-white ">Products</a>
-                     </Link >
-                     <Link  href="/contact">
-                        <a className="nav__menu__item btn btn-outline-secondary btn-sm px-4 text-white ">Contact</a>
-                     </Link >
-                           
+                    <Link href="#">
+                        <a className="social-logo text-white mx-2 px-2"> 
+                        <FaFacebookF/ >
+                        </a>
+                    </Link>
+                                                                                        
                 </div>
+                
+                
+                
+
+            </div>
+
+            
+
+            <div className = "nav__menu__big ">
+
+                <Dropdown className="dropdown__container">
+                    <Dropdown.Toggle className=" nav__menu__item  btn btn-outline-success  btn-sm px-4 text-white" variant="transparent" id="dropdown-basic">
+                        Products
+                    </Dropdown.Toggle>
+                   
+                        <Dropdown.Menu className="d-block dropdown__menu  " >
+                                <Link  href="/pants">
+                                    <a className="d-block dropdown-item pl-4 text-white btn btn-sm px-4 mb-2">Pants</a>
+                                </Link>
+                                <Link  href="/dress">
+                                    <a className="d-block dropdown-item pl-4 text-white btn btn-sm px-4">Dress</a>
+                                </Link>
+
+                      
+                            
+                    </Dropdown.Menu>
+                </Dropdown>
                   
-                    <div onClick={handleClick} className="nav__humberger">
-                        <div className="menu-logo"> <
-                             FaAlignRight
-                            / >
-                        </div>
+                    <Link  href="/about">
+                        <a className="nav__menu__item btn btn-outline-success  btn-sm px-4 text-white ">About</a>
+                     </Link >
+
+                     <Link  href="/contact">
+                        <a className="nav__menu__item btn btn-outline-success btn-sm px-4 text-white ">Contact</a>
+                     </Link >
+                   
             </div>
                   
+            <div onClick={handleClick} className="nav__humberger">
+                <div className="menu-logo"> 
+                    <FaAlignRight/ >
                 </div>
+            </div>
+                  
+    </div>
+
  
             {isOpen ? (
                  <div className = "nav__menu">
-                      <Link  href="/about">
-                        <a className="nav__menu__item  m-2 text-white ">Sign In</a>
+
+                <Dropdown className="dropdown__container drop-right m-2" 
+                    key={'right'}
+                    id={`dropdown-button-drop-right`}
+                    drop={'right'}
+                    variant="secondary"
+                    title={`Drop ${'right'}`}>
+                    <Dropdown.Toggle className=" nav__menu__item  btn btn-outline-danger btn-sm px-4 text-white  mt-4" variant="transparent" id="dropdown-basic">
+                        Products
+                    </Dropdown.Toggle>
+                   
+                        <Dropdown.Menu className="d-block dropdown__menu__right ml-3" >
+                                 <Link  href="/pants">
+                                    <a className="d-block dropdown-item pl-4   text-white btn btn-sm px-4 mb-2">Pants</a>
+                                </Link>
+                                <Link  href="/dress">
+                                    <a className="d-block dropdown-item pl-4  text-white btn btn-sm px-4">Dress</a>
+                                </Link>
+
+                    
+                    </Dropdown.Menu>
+                </Dropdown>
+                    <Link  href="/about">
+                        <a className="nav__menu__item  m-2 btn btn-outline-danger btn btn-sm px-4 text-white ">About</a>
                      </Link >
-                     <Link  href="/about">
-                        <a className="nav__menu__item  m-2 text-white ">Sign Out</a>
-                     </Link >
-                     <Link  href="/about">
-                        <a className="nav__menu__item  m-2 text-white ">About</a>
-                     </Link >
-                     <Link  href="/products">
-                        <a className="nav__menu__item  m-2 text-white ">Product</a>
-                     </Link >
+
                      <Link  href="/contact">
-                        <a className="nav__menu__item  m-2 text-white ">Contact</a>
+                        <a className="nav__menu__item  m-2 btn btn-outline-danger btn btn btn-sm px-4 text-white ">Contact</a>
                      </Link >
                    
                 </div>):(
@@ -100,14 +144,16 @@ function MyNavbar() {
 
                
                 }
+
+              
                 
-                
+              
                 `
                 }
             </style>
                             
           
-        </div>
+</div>
     )
 }
 

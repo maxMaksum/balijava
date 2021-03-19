@@ -5,7 +5,7 @@ function Layout({children}) {
           <div>
 
                
-           <div>
+           <div className="layout">
                 <MyNavbar/>
                 {children}
            </div>

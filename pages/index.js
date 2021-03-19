@@ -22,38 +22,29 @@ export const getStaticProps = async()=>{
 
 
 export default function Home (props) {
-
-
 const [query, setQuery] = useState('')
 const Psearch = props.products
-
-console.log('new', Psearch)
-
 
 const fuse = new Fuse(Psearch, { 
   keys: ["title"]    
 });  
 
-console.log('new', fuse)
-const results = fuse.search(query);
-  // const results = fuse.search('bender');
 
-console.log('new-research',results)
+const results = fuse.search(query);
 const ProductResults = query ? results.map(result=>result.item): Psearch
 
-console.log('ProductResults', ProductResults)
 
 function handleOnSearch({ currentTarget }){
   const {value} = currentTarget
   setQuery(value)
 }
-console.log(props.products)
+// console.log(props.products)
   return (
     <div className="container-main">
         <Head>
 
         </Head>
-       <div className="myZindex">
+       <div className="">
           <Slider/>
        </div>
 

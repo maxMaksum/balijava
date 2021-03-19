@@ -7,16 +7,16 @@ import 'swiper/swiper-bundle.css';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay ]); 
 function Products_Slider(props) {
-    console.log(props)
+    
     return (
         <div>
             <div>
             <Swiper
             spaceBetween={100}
             slidesPerView={1}
-            // navigation
+          
             pagination={{ clickable: true }}
-            // scrollbar={{ draggable: true }}
+          
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
             >

@@ -1,4 +1,6 @@
 /* utilities */
+
+
  a{
   color: #262626 !important;
   text-decoration:none !important;
@@ -15,23 +17,12 @@
   font-size: xx-small!important;
 }
 
-.btn {
-  cursor:pointer;
-  display:inline-block;
-  border:0;
-  font-weight: bold;
-  background: #222;
-  color:#fff;
-  font-size:15px;
-  padding:0px 10px;
- 
-
-} 
-
-.btn:hover{
-  opacity:0.9;
+.dropdown-menu a:hover {background-color: hsl(350, 81%, 56%); 
 }
-/* NavBar */
+.dropdown-menu a:active {background-color:hsl(350, 81%, 56%); 
+  }
+.dropdown-menu a:visited {background-color: hsl(350, 81%, 56%); 
+  }
 
 .container-main{
   position: relative;
@@ -52,32 +43,44 @@
     background-color: #131921;
     
 }
+.dropdown__menu{
+  background-color: #131921 !important;
+}
 
+.dropdown__menu__right{
+  background-color:green!important;
+}
 .nav__logo{
   display: flex;
   width: 30%;
+  position: absolute;
+  left: 0px;
  
+}
+
+.social-menu{
+  position: absolute;
+  left: 250px;
 }
 .menu-logo{
   color:white
 }
 .navright_container {
   display: flex;
-  /* flex-direction: column; */
   width: 100%;
-  /* justify-content: start; */
   align-items: center;
+  justify-content:space-evenly;
 }
 .nav__menu{
   top: 0;
-  position: absolute;
-  background-color: blue;
+  background-color: green;
   height: 100%;
   padding-top: 50px;
   padding-left: 0px;
-  opacity: 0.4;
-  width: 30%;
-  position: fixed;
+  margin-left: 0px;
+  opacity: 0.9;
+  width: 35%;
+  position: absolute;
 }
 .nav__menu__item{
   display: block;
@@ -122,24 +125,7 @@
     }
    }  
    
-   /* Slider */
-   .slider__wrapper{
-     z-index: 1;
-   }
-   
-   
-   
-
   
-   .myZindex{
-    z-index: 0;
-  }
-  .maxZindex{
-    z-index: 5;
-    position:fixed;
-    width:100%;
-    top:0
-  }
   
   /* homecards */
 
