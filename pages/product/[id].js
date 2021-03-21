@@ -1,4 +1,4 @@
-import Image from 'next/image'
+
 import ProductDetail from '../../components/ProductDetail'
 import {client} from '../../utils/shopify'
 
@@ -33,10 +33,7 @@ export const getStaticProps = async(context)=>{
 
 
 function Details({product}) {
-
-    console.log(product)
-
-    const {NEXT_PUBLIC_API} = process.env
+    
     return (
         <div className="container product__container mt-5">
             <div class="row mx-auto">

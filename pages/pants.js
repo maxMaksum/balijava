@@ -1,13 +1,7 @@
 import React from 'react'
 import {client} from '../utils/shopify'
-import Head from 'next/head'
 import Products_Slider from '../components/Products_Slider'
 import Link from 'next/link'
-import {FaAlignRight, FaSistrix } from 'react-icons/fa';
-import Fuse from 'fuse.js';
-
-import Slider from '../components/Slider';
-import { FaLongArrowAltRight } from 'react-icons/fa';
 
 
 export const getStaticProps = async()=>{
@@ -23,11 +17,7 @@ export const getStaticProps = async()=>{
 
 function pants({pants}) {
 
-    console.log(pants.products)
 
-  
-
-   
     return (
       
         <div className="mt-50">

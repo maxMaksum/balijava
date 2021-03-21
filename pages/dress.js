@@ -1,36 +1,25 @@
 import React from 'react'
 import {client} from '../utils/shopify'
-import Head from 'next/head'
+
 import Products_Slider from '../components/Products_Slider'
 import Link from 'next/link'
-import {FaAlignRight, FaSistrix } from 'react-icons/fa';
-import Fuse from 'fuse.js';
 
-import Slider from '../components/Slider';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 
 
 export const getStaticProps = async()=>{
 
-    const newColl = await client.collection.fetchAllWithProducts()
-   
-    const newPants= await client.collection.fetchWithProducts("Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzI2MTQ5NjE0NDA4MQ==")
+    const newDress= await client.collection.fetchWithProducts("Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzI2MTQ5NjE0NDA4MQ==")
   
     return {
       props: {
-        pants: JSON.parse(JSON.stringify(newPants)),
-        myColl: JSON.parse(JSON.stringify(newColl)),
+        dress: JSON.parse(JSON.stringify(newDress)),
+     
        },
     }
   }
 
-function dress ({pants, myColl}) {
-
-
-
-  
-
-   
+function dress ({dress}) {
     return (
       
         <div className="mt-50">
@@ -40,7 +29,7 @@ function dress ({pants, myColl}) {
 
 <div className="row ">
 
-{pants.products.map(product=>(
+{dress.products.map(product=>(
 
 <div key={product.id} className="col col-sm-6  col-md-6 col-lg-4 product__container">
 

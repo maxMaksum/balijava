@@ -38,7 +38,7 @@ function handleOnSearch({ currentTarget }){
   const {value} = currentTarget
   setQuery(value)
 }
-// console.log(props.products)
+
   return (
     <div className="container-main">
         <Head>

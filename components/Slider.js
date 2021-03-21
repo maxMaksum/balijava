@@ -90,7 +90,7 @@ const data = [
                     <SwiperSlide key={user.id}>
                    
                    <div className="card text-right" >
-                        <img class="img-fluid"src={user.image} className="card-img-top" />
+                        <img className="img-fluid"src={user.image} className="card-img-top" />
                         <div className="card-img-overlay ">
                             <h5 className="card-title text-light">{user.caption}</h5>
                             <h6 className="card-subtitle mb-2 text-light ">{user.title}</h6>
