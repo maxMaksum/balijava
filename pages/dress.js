@@ -4,9 +4,6 @@ import {client} from '../utils/shopify'
 import Products_Slider from '../components/Products_Slider'
 import Link from 'next/link'
 
-import { FaLongArrowAltRight } from 'react-icons/fa';
-
-
 export const getStaticProps = async()=>{
 
     const newDress= await client.collection.fetchWithProducts("Z2lkOi8vc2hvcGlmeS9Db2xsZWN0aW9uLzI2MTQ5NjE0NDA4MQ==")

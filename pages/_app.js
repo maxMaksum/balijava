@@ -4,11 +4,6 @@ import '../public/index.css'
 import Layout from '../components/Layout'
 import styled from 'styled-components'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
-
-
-
-
 function MyApp({ Component, pageProps }) {
   return (
     
