@@ -21,7 +21,7 @@ function pants({pants}) {
     return (
       
         <div className="mt-50">
-           <h1>Helllo World</h1>
+           <h1>Helllo World lalal</h1>
 
            <div className="overflow-hidden g-1 w-100">
 
