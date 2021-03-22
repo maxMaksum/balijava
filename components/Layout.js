@@ -7,7 +7,9 @@ function Layout({children}) {
                
            <div className="layout">
                 <MyNavbar className="navbar"/>
+                <div className="top-60">
                 {children}
+                </div>
            </div>
             
         </div>

@@ -3,11 +3,11 @@ import {client} from '../utils/shopify'
 import Head from 'next/head'
 import Products_Slider from '../components/Products_Slider'
 import Link from 'next/link'
-import {FaAlignRight, FaSistrix } from 'react-icons/fa';
+import {FaSistrix } from 'react-icons/fa';
 import Fuse from 'fuse.js';
 
 import Slider from '../components/Slider';
-import { FaLongArrowAltRight } from 'react-icons/fa';
+
 
 export const getStaticProps = async()=>{
    
@@ -40,7 +40,7 @@ function handleOnSearch({ currentTarget }){
 }
 
   return (
-    <div className="container-main">
+    <div className="container-main mt-60">
         <Head>
 
         </Head>
@@ -53,7 +53,7 @@ function handleOnSearch({ currentTarget }){
 
             <div className="header__search d-flex justify-content-center  container mx-auto py-20">
                   <input
-                      className ="header__searchInput w-75"
+                      className ="header__searchInput w-75 border border-light"
                       type="text"
                       value={query}
                       onChange={handleOnSearch}
@@ -72,7 +72,7 @@ function handleOnSearch({ currentTarget }){
        
         <div key={product.id} className="col col-sm-6  col-md-6 col-lg-4 product__container">
             
-            <div className="border border-primary my-2">
+            <div className="border border-light my-2">
 
             <div className="p-2">
                  <Products_Slider productImage={product.images}/>
@@ -124,14 +124,14 @@ function handleOnSearch({ currentTarget }){
 
   .header__search__logo{
     height:28px;
-    color:white;
-    background:green;
-    border-radius:20 px;
+    color:black;
+   
+    border-radius:20px;
       
   }
            
   .product__info{
-    height:100px;
+    height:150px;
     width:100%;
     display:flex;
     flex-direction:column;

@@ -20,8 +20,8 @@ function pants({pants}) {
 
     return (
       
-        <div className="mt-50">
-           <h1>Helllo World lalal</h1>
+        <div className="mt-60">
+           <h1>Helllo World lalaln</h1>
 
            <div className="overflow-hidden g-1 w-100">
 
@@ -31,7 +31,7 @@ function pants({pants}) {
 
 <div key={product.id} className="col col-sm-6  col-md-6 col-lg-4 product__container">
 
-<div className="border border-primary my-2">
+<div className="border border-light mt-10">
 
 <div className="p-2">
      <Products_Slider productImage={product.images}/>
@@ -40,7 +40,7 @@ function pants({pants}) {
 <div className="product__info py-1 text-center card-body ">
   <Link href={`/product/${product.id}`}><p className="product__title "> {product.title}</p></Link>
 
-    <div className="product__price">
+  <div className="product__price pb-4">
           <small>IDR</small>
           <strong> {product.variants[0].price}</strong>
      </div>
@@ -90,7 +90,7 @@ border-radius:20 px;
 }
 
 .product__info{
-height:100px;
+height:150px;
 width:100%;
 display:flex;
 flex-direction:column;

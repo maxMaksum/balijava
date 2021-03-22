@@ -117,7 +117,9 @@ const data = [
                       
                     }
 
-             
+                .slider__main{
+                    margin-top:60px
+                }
                 }
               
                 `}

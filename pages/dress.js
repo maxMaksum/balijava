@@ -19,7 +19,7 @@ export const getStaticProps = async()=>{
 function dress ({dress}) {
     return (
       
-        <div className="mt-50">
+        <div className="mt-60">
            <h1>Helllo World</h1>
 
            <div className="overflow-hidden g-1 w-100">
@@ -89,7 +89,7 @@ border-radius:20 px;
 }
 
 .product__info{
-height:100px;
+height:150px;
 width:100%;
 display:flex;
 flex-direction:column;

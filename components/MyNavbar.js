@@ -25,14 +25,14 @@ function MyNavbar() {
                 <div className="d-flex social-menu ">
                     <Link href="https://wa.me/6281246951065">
                         <a className="social-logo text-success text-lg fa-5x  mx-2 px-2"> 
-                            <FaWhatsapp size={32} />
+                            <FaWhatsapp size={20} />
                         </a>
                     </Link>
 
                     <Link href="#">
                         <a className="social-logo text-primary mx-2 px-2"> 
                        
-                            < FaFacebookF size={32} />
+                            < FaFacebookF size={20} />
                         </a>
                     </Link>
 
