@@ -3,7 +3,7 @@ import React from 'react'
 function about() {
     return (
         <div>
-            Hello World
+            Hello World OK
         </div>
     )
 }
