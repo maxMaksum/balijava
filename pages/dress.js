@@ -30,7 +30,7 @@ function dress ({dress}) {
 
 <div key={product.id} className="col col-sm-6  col-md-6 col-lg-4 product__container">
 
-<div className="border border-primary my-2">
+<div className="border border-light my-2">
 
 <div className="p-2">
      <Products_Slider productImage={product.images}/>
