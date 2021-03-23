@@ -18,107 +18,50 @@ export const getStaticProps = async()=>{
 
 function dress ({dress}) {
     return (
-      
-        <div className="mt-60">
-           <h1>Helllo World</h1>
+      <div className="mt-60">
+        <h1>Helllo World</h1>
 
-           <div className="overflow-hidden g-1 w-100">
+        <div className="overflow-hidden g-1 w-100">
+          <div className="row">
+            {dress.products.map((product) => (
+              <Link href={`/product/${product.id}`}>
+                <div
+                  key={product.id}
+                  className="col col-sm-6  col-md-6 col-lg-4 product__container"
+                >
+                  
+                    <div className="p-2 card__container card m-2">
+                      <Products_Slider productImage={product.images} />
 
-<div className="row ">
+                      <div className="product__info py-1 text-center card-body ">
+                        <p className="product__title card-title">
+                          {" "}
+                          {product.title}
+                        </p>
 
-{dress.products.map(product=>(
+                        <div className="product__price card-text">
+                          <small>IDR</small>
+                          <strong> {product.variants[0].price}</strong>
+                        </div>
+                      </div>
+                    </div>
+                  
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
 
-<div key={product.id} className="col col-sm-6  col-md-6 col-lg-4 product__container">
-
-<div className="border border-light my-2">
-
-<div className="p-2">
-     <Products_Slider productImage={product.images}/>
-  </div>
-</div>
-<div className="product__info py-1 text-center card-body ">
-  <Link href={`/product/${product.id}`}><p className="product__title "> {product.title}</p></Link>
-
-    <div className="product__price">
-          <small>IDR</small>
-          <strong> {product.variants[0].price}</strong>
-     </div>
-
-</div>
-
-
-
-
-</div>
-
-))}
-
-</div>
-</div>
-
-<style jsx>{`
-
-
-
-.product__container{
-display:flex;
-flex-direction:column;
-background-color:white;
-
-}
-
-
-
-.header__search{
-display:flex;
-align-items:center;
-
-border:none;
-height:30px;
-margin-top:10px;
-
-
-}
-
-.header__search__logo{
-height:28px;
-color:white;
-background:green;
-border-radius:20 px;
-
-}
-
-.product__info{
-height:150px;
-width:100%;
-display:flex;
-flex-direction:column;
-align-items:center;
-}
-
-
-}
-.card-image{
-height:200px;
-width:100%
-
-}
-
-img{
-object-fit:contain;
-height:150px;
-width:100%
-}
-`
-
-}
-
-
-</style>
-
-</div>
- 
-    )
+        <style jsx>
+          {`
+            .card__container {
+              height: 300px;
+              width: 100%;
+            }
+          `}
+        </style>
+      </div>
+    );
 }
 
 export default dress

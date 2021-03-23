@@ -73,7 +73,7 @@ const data = [
 
     return (
         
-        <div className ="slider__main">
+        <div className =" container-main">
         <div className="swiper__container">
             <Swiper
                     spaceBetween={100}
@@ -88,17 +88,18 @@ const data = [
                     { newData.map(user=>(
 
                     <SwiperSlide key={user.id}>
-                   
-                   <div className="card text-right" >
-                        <img className="img-fluid"src={user.image} className="card-img-top" />
+                   <div className="">
+                   <div className="card bg-dark text-white" >
+                        <img className="img-fluid"src={user.image}/>
+
                         <div className="card-img-overlay ">
-                            <h5 className="card-title text-light">{user.caption}</h5>
-                            <h6 className="card-subtitle mb-2 text-light ">{user.title}</h6>
+                            <h5 className="card-title">{user.caption}</h5>
+                            <h6 className="card-text ">{user.title}</h6>
                           
                         </div>
                         </div>
                        
-                  
+                     </div>
                     </SwiperSlide>
                     ))}
 
@@ -117,9 +118,7 @@ const data = [
                       
                     }
 
-                .slider__main{
-                    margin-top:60px
-                }
+               
                 }
               
                 `}

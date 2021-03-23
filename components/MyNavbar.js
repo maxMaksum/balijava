@@ -24,13 +24,13 @@ function MyNavbar() {
 
                 <div className="d-flex social-menu ">
                     <Link href="https://wa.me/6281246951065">
-                        <a className="social-logo text-success text-lg fa-5x  mx-2 px-2"> 
+                        <a className="social-logo text-white fa-5x  mx-1 px-1"> 
                             <FaWhatsapp size={20} />
                         </a>
                     </Link>
 
                     <Link href="#">
-                        <a className="social-logo text-primary mx-2 px-2"> 
+                        <a className="social-logo text-white mx-1 px-1"> 
                        
                             < FaFacebookF size={20} />
                         </a>
@@ -138,23 +138,10 @@ function MyNavbar() {
                     color:white;
                 }
 
-                .header__search{
-                    display:flex;
-                    align-items:center;
-                    border-radius:20 px;
-                    boder:none;
-                    height:20px;
-
-                }
-
-                .header__search__logo{
-                    height:26px;
-                    color:white;
-                    background:green;
-                    boder:none
+              
 
                
-                }
+                
 
               
                 

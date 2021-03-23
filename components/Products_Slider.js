@@ -22,13 +22,15 @@ function Products_Slider(props) {
             >
                 {props.productImage.map(p=>(
                 <SwiperSlide key={p.id} >
-                    <div>
-                      
-                        <img className="card-image-top"
-                      
-                        src={p.src} alt=""/>
+                    <div className="">
+                        <div className="card__container">
+                            <img className="img-fluid image__product"
+                        
+                            src={p.src} alt=""/>
+
+
+                        </div>
                     </div>
-                   
                 
                   </SwiperSlide>))}
 
@@ -37,12 +39,15 @@ function Products_Slider(props) {
         </div>
             <style jsx>
                 {`
-                
-                img{
-                    max-height:300px;
-                    width:100%;
-                    object-fit:contain;
+                .card__container{
+                    height:200px,
                 }
+                .image__product{
+                    width: 100%;
+                    height: 200px;
+                    object-fit: contain;
+                }
+
                 `
                 }
 

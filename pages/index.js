@@ -40,7 +40,7 @@ function handleOnSearch({ currentTarget }){
 }
 
   return (
-    <div className="container-main mt-60">
+    <div className="container-main">
         <Head>
 
         </Head>
@@ -48,9 +48,7 @@ function handleOnSearch({ currentTarget }){
           <Slider/>
        </div>
 
-
-      <div className="overflow-hidden g-1 w-100">
-
+     
             <div className="header__search d-flex justify-content-center  container mx-auto py-20">
                   <input
                       className ="header__searchInput w-75 border border-light"
@@ -63,54 +61,40 @@ function handleOnSearch({ currentTarget }){
                   </div>
             </div>
 
-      
-     
-
        <div className="row ">
      
       {ProductResults.map(product=>(
        
-        <div key={product.id} className="col col-sm-6  col-md-6 col-lg-4 product__container">
-            
-            <div className="border border-light my-2">
-
-            <div className="p-2">
-                 <Products_Slider productImage={product.images}/>
-              </div>
-            </div>
-            <div className="product__info py-1 text-center card-body ">
-              <Link href={`/product/${product.id}`}><p className="product__title "> {product.title}</p></Link>
-            
-                <div className="product__price">
-                      <small>IDR</small>
-                      <strong> {product.variants[0].price}</strong>
-                 </div>
-
-            </div>
-
-
-
-
+       <Link href={`/product/${product.id}`}>
+       <div key={product.id} className="col col-sm-6  col-md-6 col-lg-4 ">
+       
+          
+        <div className="p-2 m-2 card__container card">
+             <Products_Slider productImage={product.images} />
+       
+           <div className="product__info py-1 text-center card-body ">
+             
+           <p className="product__title card-title"> {product.title}</p>
+       
+             <div className="product__price card-text">
+                   <small>IDR</small>
+                   <strong> {product.variants[0].price}</strong>
+             </div>
         </div>
+       
+       
+       </div>
+       
+       </div>
+       </Link>
 
       ))}
 
       </div>
-      </div>
+     
       
 <style jsx>{`
 
-
-
-  .product__container{
-    display:flex;
-    flex-direction:column;
-    background-color:white;
-
-  }
-
-
- 
   .header__search{
     display:flex;
     align-items:center;
@@ -139,18 +123,7 @@ function handleOnSearch({ currentTarget }){
   }
 
 
-}
-  .card-image{
-    height:200px;
-    width:100%
-
-  }
-
-  img{
-    object-fit:contain;
-    height:150px;
-    width:100%
-  }
+ 
   `
   
   }

@@ -20,9 +20,9 @@ function ProductDetail(props) {
             >
                 {props.productImage.map(p=>(
                 <SwiperSlide key={p.id} >
-                    <div>
-                        <div className="card">
-                        <img className="card-img-top"
+                    <div className="card">
+                        <div className="card__container">
+                        <img className="image__product img-fluid"
                         src={p.src} alt=""/>
                          </div>
                      </div>
@@ -31,8 +31,31 @@ function ProductDetail(props) {
 
         </Swiper>
             
+        <style jsx>
+                {`
+                .card__container{
+                    height:300px,
+                }
+                .image__product{
+                    width: 100%;
+                    height: 300px;
+                    object-fit: contain;
+                }
 
+                @media only screen and (min-width: 600px) {
+                    .image__product{
+                    width: 100%;
+                    height: 400px;
+                    object-fit: contain;
+                }
+                }
+
+                `
+                }
+
+            </style>
             
+                        
         </div>
     )
 }

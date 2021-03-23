@@ -35,54 +35,30 @@ export const getStaticProps = async(context)=>{
 function Details({product}) {
     
     return (
-        <div className="container product__container mt-5">
-            <div class="row mx-auto">
-                <div className="col  col-md-8">
+        <div className="container-main">
+        <div className="container pt-2">
+            <div className="row mx-auto">
+                <div className="col  col-md-6">
                     <ProductDetail productImage={product.images}/>
                 </div>
 
-                <div class="col col-md-4">
-                    <p class="text-lead"> {product.title}.</p>
-                    <div className="product__price">
-                      <small>IDR</small>
-                      <strong> {product.variants[0].price}</strong>
+                <div class="col col-md-6">
+                    <div className="card-body">
+                        <p className="card-title"> {product.title}.</p>
+                        <div className="product__price card-text">
+                        <small>IDR</small>
+                            <strong> {product.variants[0].price}</strong>
 
-                    </div>
+                        </div>
 
-                    <div>
-                        <p>{product.description}</p>
-                    </div>
-                    
-                </div>
-
-               
+                        <div className="card-text">
+                            <p>{product.description}</p>
+                        </div>
+                    </div>  
+                </div> 
             </div>
             
-
-            <style jsx>{`
-
-                .product__row{
-                    
-               
-                }
-                
-                .product__details__img{
-                    width:500px;
-                    height:400px;
-                    object-fit:contain;
-                    object-position:center;
-                  
-         
-                }
-
-              
-                
-                
-                `
-                
-                
-                }</style>
-
+            </div>
         </div>
     )
 }

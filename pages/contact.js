@@ -1,6 +1,7 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
 import {useRouter} from 'next/router'
+import Adress from '../components/Adress';
 
 
 function contact() {
@@ -39,7 +40,7 @@ function contact() {
     }
 
     return (
-        <div className="container">
+        <div className="container container-main">
          <form onSubmit={handleSubmit(onSubmit)} className="container">
             <div className="form-group">
             <label htmlFor="exampleInputName"> Name</label>
@@ -124,6 +125,7 @@ function contact() {
   
 </form>
 
+<Adress/>
 
 </div>
     )
