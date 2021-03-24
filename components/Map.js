@@ -3,7 +3,7 @@ import React from 'react'
 function Map() {
     return (
         <div className="container card">
-        <h4 className="card-title text-center fw-bold p-2 ">Map</h4>
+        <h4 className="card-title text-center fw-bold p-2 ">Map OK</h4>
         <div className="col-sm-12">
           <iframe
             className="card"
