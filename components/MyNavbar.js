@@ -101,7 +101,7 @@ function MyNavbar() {
                     drop={'right'}
                     variant="secondary"
                     title={`Drop ${'right'}`}>
-                    <Dropdown.Toggle className=" nav__menu__item  btn btn-outline-dark border-0 btn-sm text-white px-4 mt-4" variant="transparent" id="dropdown-basic">
+                    <Dropdown.Toggle className=" nav__menu__item  btn btn-outline-danger border-0 btn-sm text-white px-4 mt-4" variant="transparent" id="dropdown-basic">
                         Products
                     </Dropdown.Toggle>
                    
@@ -117,11 +117,11 @@ function MyNavbar() {
                     </Dropdown.Menu>
                 </Dropdown>
                     <Link  href="/about">
-                        <a className="nav__menu__item m-2  btn btn-outline-dark border-0 btn-sm px-4 text-white ">About</a>
+                        <a className="nav__menu__item m-2  btn btn-outline-danger border-0 btn-sm px-4 text-white ">About</a>
                      </Link >
 
                      <Link  href="/contact">
-                        <a className = "nav__menu__item m-2   btn btn-outline-dark border-0 btn-sm px-4 text-white ">Contact</a>
+                        <a className = "nav__menu__item m-2   btn btn-outline-danger border-0 btn-sm px-4 text-white ">Contact</a>
                      </Link >
 
                    

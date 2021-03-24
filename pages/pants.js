@@ -29,10 +29,10 @@ function pants({pants}) {
 
 {pants.products.map(product=>(
 <Link href={`/product/${product.id}`}>
-<div key={product.id} className="col col-sm-6  col-md-6 col-lg-4 product__container">
+<div key={product.id} className="col col-sm-6  col-md-6 col-lg-4">
 
   
-     <div className="p-2 card__container card">
+     <div className="p-2 m-2 card__container card">
       <Products_Slider productImage={product.images} />
 
     <div className="product__info py-1 text-center card-body ">
@@ -56,12 +56,9 @@ function pants({pants}) {
 </div>
 
 <style jsx>{`
-.card__container {
-height:300px;
-width:100%;
 
 
-}
+
 
 
 
@@ -93,17 +90,6 @@ align-items:center;
 }
 
 
-}
-.card-image{
-height:200px;
-width:100%
-
-}
-
-img{
-object-fit:contain;
-height:150px;
-width:100%
 }
 
 .product__container{

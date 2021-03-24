@@ -1,134 +1,40 @@
 import React from 'react'
-import { useForm } from "react-hook-form";
-import {useRouter} from 'next/router'
 import Adress from '../components/Adress';
+import Form from '../components/Form';
+import Slider from '../components/SliderPage';
 
+
+import SocialMedia from '../components/SocialMedia'
+import Map from '../components/Map'
 
 function contact() {
   
-    const { register, handleSubmit, errors,reset } = useForm();
-
-    const router = useRouter()
-   const onSubmit =   async data => {
-    try {
-       const response = await fetch('/api/contactForm', {
-            method:"POST", 
-            headers:{
-            'Content-Type':'application/json'
-            },
-            
-            body:
-                JSON.stringify(
-                {name:data.name,
-                email:data.email,
-                message:data.message
-        })})
-
-      
-        if(response.status==200){
-            console.log('suksess')
-            reset()
-            router.push('/')
-        }
-
     
-
-    } catch (error) {
-        return error
-    }
-       
-    }
-
     return (
-        <div className="container container-main">
-         <form onSubmit={handleSubmit(onSubmit)} className="container">
-            <div className="form-group">
-            <label htmlFor="exampleInputName"> Name</label>
-                <input 
-                type="text" 
-                name="name"
-                ref={
-                register({ 
-                required: {
-                    value:true,
-                    message:"You Must Enter Your Name"
-                },
-                minLength:{
-                    value:3,
-                    message:"this is not long enough"
-                },
-                maxLength:{
-                    value:120,
-                    message:"this is too long"
-                }
+      <div className="container-main">
+        <Slider />
 
-                 })}
-                className="form-control" 
-                id="exampleInputName" 
-                aria-describedby="nameHelp" placeholder="Enter Your Name"
-                
-                />
-                <span>{errors?.name?.message}</span>
-               
-            </div>
+       
+        <div className="row g-4 ">
+          <div className="col-sm-12">
+            {" "}
+            <Form />
+          </div>
 
-            <div className="form-group">
-                <label htmlFor="exampleInputEmail1">Email address</label>
-                <input 
-                type="email" 
-                name="email"
-                ref={register({ 
-                    required: {
-                        value:true,
-                        message:"You Must Enter Your Email"
-                    },
-        
-                    pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                        message: "Enter a valid e-mail address",
-                      }
-                 })}
-                className="form-control" 
-                id="exampleInputEmail1" 
-                aria-describedby="emailHelp" placeholder="Enter email"/>
-               {errors.email && <span className="error">{errors.email.message}</span>}
-                <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
+          <div className="col-sm-12 col-md-6 my-2 footer__container">
+            <SocialMedia className="h-100 m-2" />
+          </div>
+          <div className="col-sm-12 col-md-6 my-2 footer__container">
+            <Adress className="h-100" />
+          </div>
 
-            <div className="mb-3">
-            <label htmlFor="exampleFormControlTextarea1" className="form-label">Example textarea</label>
-            <textarea
-            type="textArea" 
-            name="message"
-            ref={register({ 
-                required: {
-                    value:true,
-                    message:"Please fill the message"
-                },
-                minLength:{
-                    value:8,
-                    message:"this is not long enough"
-                },
-                maxLength:{
-                    value:120,
-                    message:"this is too long"
-                }
-             })}
-           
-             className="form-control" 
-             id="exampleFormControlTextarea1" rows="3"></textarea>
-             <span>{errors?.message?.message}</span>
-            </div>
-
-  <button type="submit" className="btn btn-primary">Submit</button>
-
-  
-</form>
-
-<Adress/>
-
-</div>
-    )
+          <div className="col-sm-12">
+            {" "}
+            <Map />
+          </div>
+        </div>
+      </div>
+    );
 }
 
 export default contact

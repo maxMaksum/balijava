@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import MyNavbar from "./MyNavbar";
 
 function Layout({children}) {
@@ -10,6 +11,7 @@ function Layout({children}) {
                 <div className="top-60">
                 {children}
                 </div>
+                <Footer/>
            </div>
             
         </div>
