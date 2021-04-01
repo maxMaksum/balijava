@@ -8,7 +8,8 @@ import 'swiper/swiper-bundle.css';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay ]); 
 
 
-function ProductDetail(props) {
+function ProductDetail({image}) {
+    console.log(image)
     return (
         <div className="container">
             <Swiper
@@ -18,12 +19,13 @@ function ProductDetail(props) {
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
             >
-                {props.productImage.map(p=>(
+                {image.map(p=>(
+                
                 <SwiperSlide key={p.id} >
                     <div className="card">
                         <div className="card__container">
                         <img className="image__product img-fluid"
-                        src={p.src} alt=""/>
+                        src= {p.url} alt=""/>
                          </div>
                      </div>
                 

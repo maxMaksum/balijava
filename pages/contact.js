@@ -6,15 +6,16 @@ import Slider from '../components/SliderPage';
 
 import SocialMedia from '../components/SocialMedia'
 import Map from '../components/Map'
+import Search from '../components/Search';
 
 function contact() {
-  
+
     
     return (
       <div className="container-main">
         <Slider />
 
-       
+       <Search/>
         <div className="row g-4 ">
           <div className="col-sm-12">
             {" "}

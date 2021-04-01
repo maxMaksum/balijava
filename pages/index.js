@@ -1,43 +1,50 @@
 import React, {useState} from 'react';
-import {client} from '../utils/shopify'
+// import {client} from '../utils/shopify'
 import Head from 'next/head'
 import Products_Slider from '../components/Products_Slider'
 import Link from 'next/link'
 import {FaSistrix } from 'react-icons/fa';
 import Fuse from 'fuse.js';
-
+import { gql } from "@apollo/client";
+import client from "../apollo-client";
 import Slider from '../components/Slider';
 
 
-export const getStaticProps = async()=>{
-   
-  const products =  await client.product.fetchAll()
 
-  return {
+export async function getStaticProps() {
+  const { data } = await client.query({
+    query: gql`
+    query productsQuary {
+      products (first:25){
+        id
+        title
+        slug
+        description{
+          text
+        }
+        image {
+          url
+           width
+          height
+        }
+      }
+
+     
+    }
+    `,
+  });
+
+return {
     props: {
-      products: JSON.parse(JSON.stringify(products)),
-     },
-  }
+      products: data.products,
+    },
+ };
 }
 
-
-export default function Home (props) {
-const [query, setQuery] = useState('')
-const Psearch = props.products
-
-const fuse = new Fuse(Psearch, { 
-  keys: ["title"]    
-});  
+export default function Home ({products}) {
+console.log(products)
 
 
-const results = fuse.search(query);
-const ProductResults = query ? results.map(result=>result.item): Psearch
-
-
-function handleOnSearch({ currentTarget }){
-  const {value} = currentTarget
-  setQuery(value)
-}
 
   return (
     <div className="container-main">
@@ -48,37 +55,26 @@ function handleOnSearch({ currentTarget }){
           <Slider/>
        </div>
 
-     
-            <div className="header__search d-flex justify-content-center  container mx-auto py-20">
-                  <input
-                      className ="header__searchInput w-75 border border-light"
-                      type="text"
-                      value={query}
-                      onChange={handleOnSearch}
-                      />
-                  <div className="header__search__logo px-2">
-                      <FaSistrix/>
-                  </div>
-            </div>
+    
 
        <div className="row ">
-     
-      {ProductResults.map(product=>(
+    
+      {products.map(product=>(
        
        <Link href={`/product/${product.id}`}>
        <div key={product.id} className="col col-sm-6  col-md-6 col-lg-4 ">
        
           
         <div className="p-2 m-2 card__container card">
-             <Products_Slider productImage={product.images} />
-       
+             <Products_Slider variants={product.image} />
+            {console.log(product.image[1].url)}
            <div className="product__info py-1 text-center card-body ">
              
            <p className="product__title card-title"> {product.title}</p>
        
              <div className="product__price card-text">
                    <small>IDR</small>
-                   <strong> {product.variants[0].price}</strong>
+                   <strong> {product.price}</strong>
              </div>
         </div>
        
@@ -88,7 +84,7 @@ function handleOnSearch({ currentTarget }){
        </div>
        </Link>
 
-      ))}
+      ))} 
 
       </div>
      
