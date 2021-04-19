@@ -7,7 +7,7 @@ import {getProducts, endpoint, productsQuery} from '../graphql/schema'
 
 import Fuse from 'fuse.js';
 import Products_Slider from '../components/Slider/Products_Slider';
-import SliderDetail from '../components/Utils/SliderDetail';
+import SliderDetail from '../components/Slider/SliderDetail';
 import Quote from '../components/Card/Quote';
 
 export async function getStaticProps(context) {

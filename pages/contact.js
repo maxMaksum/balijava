@@ -4,7 +4,7 @@ import Form from '../components/Utils/Form';
 import SocialMedia from '../components/Utils/SocialMedia'
 import Map from '../components/Utils/Map'
 
-import SliderPage from '../components/utils/sliderPage'
+import SliderPage from '../components/Slider/SliderPage'
 
 function contact() {
 

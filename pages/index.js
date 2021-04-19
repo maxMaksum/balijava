@@ -5,7 +5,7 @@ import {request} from 'graphql-request'
 import {useQuery} from "react-query"
 import {getPages, endpoint, pagesQuery, sliderPage} from '../graphql/schema'
 import Products_Slider from '../components/Slider/Products_Slider';
-import SliderPage from '../components/Utils/SliderPage';
+import SliderPage from '../components/Slider/SliderPage';
 import Quote from '../components/Card/Quote';
 
 

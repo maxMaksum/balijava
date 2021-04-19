@@ -7,46 +7,43 @@ import {motion} from 'framer-motion'
 
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay ]);
-function SliderPage() {
-   
+
 const newdata = [
-        {id:11,
-        image:'/bckground.jpg',  
+    {id:11,
+    image:'/bckground.jpg',  
+    title: "lorem lorem lorem lorem",
+    
+    },
+    {id:1,
+    image:'/boy.jpg',  
+    title: "lorem lorem lorem lorem",
+    
+    },
+
+    {
+        id:2,
+        image:'/sunrise.jpg',
         title: "lorem lorem lorem lorem",
-        
-        },
-        {id:1,
-        image:'/boy.jpg',  
+    },
+
+    {
+        id:3,
+        image:'/Young.jpg',
         title: "lorem lorem lorem lorem",
-        
-        },
+  
+    }
+    
 
-        {
-            id:2,
-            image:'/sunrise.jpg',
-            title: "lorem lorem lorem lorem",
-        },
+]
 
-        {
-            id:3,
-            image:'/Young.jpg',
-            title: "lorem lorem lorem lorem",
-      
-        }
-        
 
-    ]
 
- 
+function SliderPage() {
 
-   
     return (
         
-        <motion.div 
-        initial={{ x: '-100vw'}}
-        animate={{x:0}}
-        transition={{delay:0.5}}
-        className =" container-main">
+        <div>
+
      
             <Swiper
                     spaceBetween={100}
@@ -65,7 +62,7 @@ const newdata = [
                             <div className="image-container" style ={{height:'400px'}}>
                               <img className='card-image h-100 w-100' src={user.image}/> 
                               <div className="card-img-overlay">
-                                        <h5 className="card-title text-white">{user.title}</h5>
+                              <h5 className="card-title text-white">{user.title}</h5>
                              </div> 
                             </div>
                               
@@ -79,19 +76,7 @@ const newdata = [
 
                 
                 </Swiper>
-             
-
-            <style jsx>
-                {`
-    
-             
-                
-              
-                `}
-
-            </style>
-
-        </motion.div>
+        </div>
     )
 }
 

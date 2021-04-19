@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import Head from 'next/head'
 import {getPages, getPage,} from '../../graphql/schema'
 import Products_Slider from '../../components/Slider/Products_Slider';
-import SliderDetail from '../../components/Utils/SliderDetail';
+import SliderDetail from '../../components/Slider/SliderDetail';
 import Quote from '../../components/Card/Quote';
 
 export async function getStaticPaths() {
