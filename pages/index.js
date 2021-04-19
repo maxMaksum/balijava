@@ -33,7 +33,7 @@ return (
 
     <div className="container-main">
          <Head>
-        <title>At Bali Java</title>
+        <title>At BaliJava</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
