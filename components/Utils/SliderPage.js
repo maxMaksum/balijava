@@ -7,7 +7,7 @@ import {motion} from 'framer-motion'
 
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay ]);
-function Slider() {
+function SliderPage() {
    
 const newdata = [
         {id:11,
@@ -95,4 +95,4 @@ const newdata = [
     )
 }
 
-export default Slider
+export default SliderPage
