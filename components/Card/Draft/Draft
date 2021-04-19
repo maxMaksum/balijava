@@ -1,0 +1,114 @@
+ < DropdownButton  id="dropdown-item-button" title="Product" className="pl-0 list-group-item text-light">
+                        
+                        <Dropdown.Item as="button">
+                           <Link  href="/products">
+                           <a className=" text-light">All Products</a>
+                          </Link >
+                        </Dropdown.Item>
+                        <Dropdown.Item as="button" >
+                         <Link  href="/products">
+                           <a className=" text-light">Dress</a>
+                          </Link >
+                        </Dropdown.Item>
+                        <Dropdown.Item as="button" className="text-light">
+                          <Link  href="/products">
+                           <a className=" text-light">Dress</a>
+                          </Link >
+                        </Dropdown.Item>
+                    </DropdownButton>
+
+
+                    *dropdown big
+
+                      <div className="d-flex">
+            < DropdownButton style={{opacity:0.7}} id="dropdown-item-button" title="Product" className="pl-0 text-light">
+                        <Dropdown.Item as="button" className="text-light">Dress</Dropdown.Item>
+                        <Dropdown.Item as="button" className="text-light">Pants</Dropdown.Item>
+                        <Dropdown.Item as="button" className="text-light">Bags</Dropdown.Item>
+            </DropdownButton>
+
+            </div>
+
+                     <Link  href="/page/about">
+                        <a className=" list-group-item">
+                            <div className ="btn btn-sm btn-light w-75 d-flex justify-content-start align-items-center pl-4">
+
+                                <FaUserTie  style={iconStyles}  />
+                                <div className="text-uppercase fw-bolder ml-4">
+                                    ABOUT US
+                                </div>
+                           
+                                 
+                            </div>
+                        </a>
+                    </Link >
+
+
+                    <Link  href="/contact">
+                        <a className=" list-group-item">
+                            
+                            <div className ="btn btn-sm btn-light w-75 d-flex justify-content-start align-items-center pl-4">
+
+                                <FaCommentDots  style={iconStyles}  />
+                                <div className="text-uppercase fw-bolder ml-4">
+                                    CONTACT FORM 
+                                </div>
+                            </div>
+                        </a>
+                    </Link >
+                    <Link  href="/products">
+                        <a className=" list-group-item">
+                            <div className ="btn btn-sm btn-light w-75 d-flex justify-content-start align-items-center pl-4">
+
+                                <FaBookOpen  style={iconStyles}  />
+                                <div className="text-uppercase fw-bolder ml-4">
+                                    Products
+                                </div>
+                            </div>
+                        </a>
+                    </Link >
+                   
+                        <a className=" list-group-item">
+                            <div className ="btn btn-sm btn-info w-75 d-flex justify-content-start align-items-center pl-4">
+
+                                <FaPhoneAlt  style={iconStyles}  />
+                                <div className="text-uppercase fw-bolder ml-4">
+                                    +62 852 0510 4517
+                                </div>
+                            </div>
+                        </a>
+                  
+                    <Link  href="https://wa.me/62 852 0510 4517">
+                        <a className=" list-group-item">
+                            <div className ="btn btn-sm btn-success w-75 d-flex justify-content-start align-items-center pl-4">
+
+                                <FaWhatsapp  style={iconStyles}  />
+                                <div className="text-uppercase fw-bolder ml-4">
+                                +62 852 0510 4517
+                                </div>
+                            </div>
+                        </a>
+                    </Link >
+
+                    <Link  href="https://wa.me/62 852 0510 4517">
+                        <a className=" list-group-item">
+                            <div className ="btn btn-sm btn-primary w-75 d-flex justify-content-start align-items-center pl-4">
+
+                                <FaFacebookF style={iconStyles}  />
+                                <div className="text-uppercase fw-bolder ml-4">
+                                FACE BOOK
+                                </div>
+                            </div>
+                        </a>
+                    </Link >
+                    <Link  href="https://wa.me/62 852 0510 4517">
+                        <a className=" list-group-item">
+                            <div className ="btn btn-sm btn-primary w-75 d-flex justify-content-start align-items-center pl-4">
+
+                                <FaRegComment style={iconStyles}  />
+                                <div className="text-uppercase fw-bolder ml-4">
+                                FB MESSENGER
+                                </div>
+                            </div>
+                        </a>
+                    </Link >

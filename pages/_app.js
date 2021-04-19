@@ -1,24 +1,21 @@
 import Head from 'next/head'
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import '../styles/globals.css'
 import '../public/index.css'
-import Layout from '../components/Layout'
+import Layout from '../components/Utils/Layout'
 import styled from 'styled-components'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { Hydrate } from 'react-query/hydration'
 
 import {
   RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
 } from 'recoil';
 
-
-
-import { ApolloProvider } from "@apollo/client";
-import client from "../apollo-client";
+ 
+const queryClient = new QueryClient()
 
 function MyApp({ Component, pageProps }) {
+
   return (
     
         
@@ -32,13 +29,14 @@ function MyApp({ Component, pageProps }) {
 
 
      
-      <ApolloProvider client={client}>
-          <RecoilRoot>
-              <Layout>
-                    <Component {...pageProps} />
-              </Layout>
-          </RecoilRoot>
-      </ApolloProvider>
+      <QueryClientProvider client={queryClient}>
+              <RecoilRoot>
+                <Layout>
+                      <Component {...pageProps} />
+                </Layout>
+              </RecoilRoot>
+        
+      </QueryClientProvider>
       
         
     

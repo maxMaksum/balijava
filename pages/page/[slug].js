@@ -1,138 +1,63 @@
 
+import React, {useState} from 'react';
+import Head from 'next/head'
+import {getPages, getPage,} from '../../graphql/schema'
+import Products_Slider from '../../components/Slider/Products_Slider';
+import SliderDetail from '../../components/Utils/SliderDetail';
+import Quote from '../../components/Card/Quote';
 
+export async function getStaticPaths() {
+    const data = await getPages()
+    return{
+        fallback: false,
+        paths: data.pages.map((p)=>({params:{slug:p.slug}}))
+    }
 
-import React from 'react'
-import NewCard from '../../components/NewCard'
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import { useQuery, gql } from '@apollo/client';
-import client from "../../apollo-client";
-import Link from 'next/link'
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import CssBaseline from '@material-ui/core/CssBaseline';
+    }
+    
 
-export const getStaticPaths = async () =>{
-
-    const { data } = await client.query({
-        query: gql`
-        query pages {
-          pages(first: 10) {
-            id
-            slug
-            subtitle
-            title
-            image {
-              url
-               width
-              height
-            }
-          }
-  
-         
-        }
-        `,
-      });
-    const paths = data.pages.map(page =>{
-        return {
-            params:{slug: page.slug.toString()}
-            
-        }
-    })
-
-    console.log(paths)
+export async function getStaticProps(context) {
+   
+    const newpages = await getPage(context.params.slug)
 
     return {
-       
-      paths:paths,
-      fallback:false
+      props: {newpages} // will be passed to the page component as props
+    }
   }
-}
+  
 
 
- export const getStaticProps = async(context)=>{
-        console.log(context)
-
-
-        const slug = context.params.slug
-        
-        const { data } = await client.query({
-          query: gql`
-          query pagesQuary ($slug: String) {
-            pages(where:{
-              slug:$slug
-            }
-            ) {
-              id
-              title
-              subtitle
-              image {
-                url
-                 width
-                height
-              }
-              content{
-                text
-                
-              }
-            }
-          }
-          `,
-          variables: {
-            slug
-          }
-        });
-    
-      
-        return {
-          props: {
-            pages: data.pages
-           },
-        }
-      }
-
-
-
-
-
-
-function page({pages}) {
-
-  console.log(pages)
+function pageDetail({newpages}) {
+    const {title, subtitle, content, images, seoTitle, seoDescription} = newpages.page
+    console.log(images)
 
     return (
-      <div className ="container-main">
-
-      <Container>
-
-      <Box display="flex" justifyContent="center" m={1} p={1}>
-          <Grid container spacing={1}>
-          
-            {pages.map(page=>(
-              
-                <Grid container key={page.id} item xs={12} sm={12}  m={1} p={1}>
-                  {console.log(page.image.url)}
-                  <NewCard 
-                  url ={page.image.url}
-                 
-                  title = {page.title}
-                  subtitle = {page.subtitle}
-                  text = {page.content.text}
-                  />
-               </Grid>
-      
-             
-            ))} 
-            
-      
-           
-             
-            </Grid>
-      </Box>
-            </Container>       
-      </div>  
+        <div className="container-main bg-light p-2">
+               <Head>
+            <title>{seoTitle}</title>
+            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        </Head>
+            <SliderDetail/>
+            <Quote/>
+            <div className="container">
+                <div className="shadow p-3 mb-5 bg-white rounded">
+                <h5 className="text-center container border border-light card-title  text-dark py-2"> {title}</h5>
+                    <div className="container">
+                    <Products_Slider variants={images}/>
+                    </div>
+        
+                    <div className="container">
+               
+                            
+                        
+                            <div>{content.text}</div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     )
 }
 
-export default page
+export default pageDetail

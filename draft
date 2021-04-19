@@ -1,0 +1,4 @@
+await client.query(WeatherQuery, {city:"toronto"}).toPromise()
+return {props:{
+    urqlState:ssrCache.extractData()
+}}

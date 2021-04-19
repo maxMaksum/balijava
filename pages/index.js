@@ -1,132 +1,78 @@
 import React, {useState} from 'react';
-// import {client} from '../utils/shopify'
 import Head from 'next/head'
-import Products_Slider from '../components/Products_Slider'
-import Link from 'next/link'
-import {FaSistrix } from 'react-icons/fa';
-import Fuse from 'fuse.js';
-import { gql } from "@apollo/client";
-import client from "../apollo-client";
-import Slider from '../components/Slider';
+import Link from "next/link"
+import {request} from 'graphql-request'
+import {useQuery} from "react-query"
+import {getPages, endpoint, pagesQuery, sliderPage} from '../graphql/schema'
+import Products_Slider from '../components/Slider/Products_Slider';
+import SliderPage from '../components/Utils/SliderPage';
+import Quote from '../components/Card/Quote';
 
 
+export async function getStaticProps(context) {
+ 
+  const initialPages = await getPages()
+ 
 
-export async function getStaticProps() {
-  const { data } = await client.query({
-    query: gql`
-    query productsQuary {
-      products (first:25){
-        id
-        title
-        slug
-        description{
-          text
-        }
-        image {
-          url
-           width
-          height
-        }
-      }
-
-     
-    }
-    `,
-  });
-
-return {
-    props: {
-      products: data.products,
-    },
- };
+  return {
+    props: { initialPages} // will be passed to the page component as props
+  }
 }
 
-export default function Home ({products}) {
-console.log(products)
+
+export default function Home ( {initialPages}) {
+
+const pagesFn = async() =>{
+  return request (endpoint, pagesQuery)
+}
+const {data} = useQuery('pages', pagesFn, {initialData:initialPages}
+)
 
 
+return (
 
-  return (
     <div className="container-main">
-        <Head>
+         <Head>
+        <title>At Bali Java</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
 
-        </Head>
-       <div className="">
-          <Slider/>
-       </div>
-
-    
-
-       <div className="row ">
-    
-      {products.map(product=>(
-       
-       <Link href={`/product/${product.id}`}>
-       <div key={product.id} className="col col-sm-6  col-md-6 col-lg-4 ">
-       
-          
-        <div className="p-2 m-2 card__container card">
-             <Products_Slider variants={product.image} />
-            {console.log(product.image[1].url)}
-           <div className="product__info py-1 text-center card-body ">
-             
-           <p className="product__title card-title"> {product.title}</p>
-       
-             <div className="product__price card-text">
-                   <small>IDR</small>
-                   <strong> {product.price}</strong>
-             </div>
-        </div>
-       
-       
-       </div>
-       
-       </div>
-       </Link>
-
-      ))} 
-
-      </div>
-     
-      
-<style jsx>{`
-
-  .header__search{
-    display:flex;
-    align-items:center;
-   
-    border:none;
-    height:30px;
-    margin-top:10px;
-  
-       
-    }
-
-  .header__search__logo{
-    height:28px;
-    color:black;
-   
-    border-radius:20px;
-      
-  }
+         <div>
+           <SliderPage/>
            
-  .product__info{
-    height:150px;
-    width:100%;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-  }
-
-
- 
-  `
-  
-  }
-
-
-</style>
+         </div>
       
+        <div>
+          <Quote/>
+          <h5 className="text-center container border border-light card-title  text-dark py-2">Home Page</h5>
+        </div>
+
+       <div>
+
+         <div className="container w-100">
+
+            <div className="row gx-5" >
+                 {data.pages && data.pages.map((page)=>(
+            
+                    <Link href={`/page/${page.slug}`}  key={page.id}key={page.id}>
+            
+                      <div className="col-12 col-sm-6 col-md-4 ">
+                        <div className="shadow p-3 mb-5 bg-white rounded">
+                        <Products_Slider variants={page.images} />
+                        <div className ="container ">
+                          <div className="text-bold text-center">{page.title} </div> 
+                          <span> {page.subtitle}</span>
+                        </div>
+                        
+                      </div>
+                      </div>
+                     </Link>
+            ))}
+           </div>
+        </div> 
+           
+         </div>
+     
 </div>
   )
 }

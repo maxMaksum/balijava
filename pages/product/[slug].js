@@ -1,128 +1,55 @@
 
-import React from 'react'
-import { useQuery, gql } from '@apollo/client';
-import client from "../../apollo-client";
-import Link from 'next/link'
-import ProductDetail from "../../components/ProductDetail"
+import React, {useState} from 'react';
+
+import Head from 'next/head'
+import {getProducts, getProduct, endpoint, productQuery} from '../../graphql/schema'
+import Products_Slider from '../../components/Slider/Products_Slider';
+import SliderDetail from '../../components/Utils/SliderDetail';
+import Quote from '../../components/Card/Quote';
 
 
-export const getStaticPaths = async () =>{
-    const { data } = await client.query({
-        query: gql`
-        query productsQuary {
-          products (first:25){
-            id
-            title
-            slug
-            description{
-              text
-            }
-            image {
-              url
-               width
-              height
-            }
-          }
+export async function getStaticPaths() {
+
+  const data = await getProducts()
+    return{
+        fallback: false,
+        paths: data.products.map((p)=>({params:{slug:p.slug}}))
+    }
+    }
+
+export async function getStaticProps(context) {
+   
+        const ProductDetail = await getProduct(context.params.slug)
     
-         
-        
-         
-        }
-        `,
-      });
-    const paths = data.products.map(product =>{
         return {
-            params:{slug: product.slug.toString()}
-            
+          props: {ProductDetail} // will be passed to the page component as props
         }
-    })
-
-    console.log(paths)
-
-    return {
-       
-      paths:paths,
-      fallback:false
-  }
-}
+    }
+  
 
 
- export const getStaticProps = async(context)=>{
-        console.log(context)
+function productDetail({ProductDetail}) {
+  
+console.log(ProductDetail)
+const {image,price, slug, title, description} =ProductDetail.product
 
 
-        const slug = context.params.slug
-        
-        const { data } = await client.query({
-          query: gql`
-          query productsQuary ($slug: String) {
-            products(where:{
-              slug:$slug
-            }
-            ) {
-              id
-              title
-              
-              image {
-                url
-                 width
-                height
-              }
-              description{
-                text
-                
-              }
-            }
-          }
-          `,
-          variables: {
-            slug
-          }
-        });
-    
-      
-        return {
-          props: {
-            product: data.products
-           },
-        }
-      }
-
-
-
-
-
-
-function product({product}) {
-
-  // console.log(product)
-
+console.log(image)
     return (
-      <div className="container-main">
-
-        <div className ="container">
-
-          {product.map((p) => (
-            <div  className="row mx-auto" key ={p.id}>
-              <div className="col col-sm-6">
-
-                <ProductDetail image ={p.image} />
-              </div>
-
-              <div className="col col-sm-6">
-                <div>
-                  <p>{p.title}</p>
-                  <p>{p.description.text}</p>
+        <div className="container-main">
+            <SliderDetail/>
+            <Quote/>
+            <div className="container shadow p-3 mb-5 bg-body rounded">
+               <Products_Slider variants = {image}/>
+                <div className ="container">
+                    <div className="text-bold"> Name: {title} </div> 
+                    <span> Price : USD {price}</span>
+                    <div className="mt-2"> {description.text}</div>
                 </div>
-              </div>
-            
             </div>
-          ))}
-
-
+        
         </div>
-      </div>
-    );
+    )
 }
 
-export default product
+export default productDetail
